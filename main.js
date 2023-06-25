@@ -1,10 +1,14 @@
 /** @format */
 
 var arr = [];
+var arrDuong = [];
+var arrAm = [];
 var sum = 0;
+var arrSoThuc = [];
 var countSoDuong = 0;
 var sumSoAm = 0;
 var finalEvenNumber = 0;
+var songuyentodautien = 0;
 // Kiểm tra array có phần tử hay không
 
 function addNumber() {
@@ -78,14 +82,33 @@ function sochancuoicung() {
 }
 
 function tangdan() {
-	for (var index = 0; index < arr.length; index++) {
-        var temp;
-		if (arr[index] > arr[index+1] ) {
-            arr[index] = temp;
-            temp =  arr[index+1];
-            arr[index+1] = arr[index];
-        }
+	for (var i = 0; i < arr.length; i++) {
+		for (var j = i+1; j < arr.length; j++) {
+			if (arr[i] > arr[j] ) {
+				var temp = arr[i];
+				arr[i] =  arr[j];
+				arr[j] = temp;
+			}
+		}
 	}
 	document.getElementById("tangDan").innerHTML =
 		"Sắp xếp mảng tăng dần " + arr;
+}
+
+function sosangsoduongsoam(){
+	for (var index = 0; index < arr.length; index++) {
+		if (arr[index] > 0){
+			arrDuong.push(arr[index]);
+		}
+		if (arr[index] < 0){
+			arrAm.push(arr[index]);
+		}
+	}
+	if (arrDuong.length > arrAm.length){
+		document.getElementById("soSanhAmDuong").innerHTML = "Số lượng số dương nhiều hơn";
+	}
+	else if (arrDuong.length < arrAm.length){
+		document.getElementById("soSanhAmDuong").innerHTML =
+			"Số lượng số âm nhiều hơn";
+	}
 }
